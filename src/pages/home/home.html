@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      KK Video Demonstration
+    </ion-title>
+    <button (click)="goToHome()">
+      Video Applikation
+    </button>
+    <button (click)="goToAdmin()">
+      Administration
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p-growl [(value)]="msgs"></p-growl>
+
+  <div>
+    <div id="video_overlays">
+        <video #videoLocal id="video-local" autoplay="autoplay">
+        </video>
+    </div>
+    <div>
+        <video #videoRemote id="video-remote" autoplay="autoplay" style="width:640px;height:370px">
+        </video>
+    </div>
+  </div>
+  <br />
+
+  <div style="width:100%">
+    <span style="width:33%">
+      <h1>Scenarie 1</h1>
+      <p-dropdown [options]="teams" optionLabel="id" [(ngModel)]="team" [style]="{'width':'229px'}" [placeholder]="teamsPlaceholder" (onChange)="teamSelectorChanged($event)"></p-dropdown>
+      <p-dropdown [options]="team.members" optionLabel="personEmail" [(ngModel)]="selected" [style]="{'width':'229px'}" [placeholder]="team.id" (onChange)="teamChanged($event)"></p-dropdown>
+    </span>
+    <span style="width:33%">  
+      <h1>Scenarie 2</h1>
+      <button pButton type="button" [label]="callButtonLabel" [icon]="callButtonIcon" iconPos="right" (click)="onCallButtonClick()" [disabled]="callButtonDisabled"></button>
+    </span>
+    <span style="width:33%">  
+      <h1>Scenarie 3</h1>
+      <div>
+        <button pButton type="button" label="Accepter" icon="fa-phone" iconPos="right" (click)="onAcceptCallButtonClick()" [disabled]="acceptCallButtonDisabled"></button>
+        <p-checkbox [(ngModel)]="autoAcceptCallChecked" binary="true"></p-checkbox>
+      </div>
+      <button pButton type="button" label="Læg på" icon="fa-stop" iconPos="right" (click)="onRejectCallButtonClick()" [disabled]="rejectCallButtonDisabled"></button>
+    </span>
+  </div>
+
+  <!--<div *ngFor="let team of teams" style="margin-bottom: 10px;">
+      <p-dropdown [options]="team.members" optionLabel="personEmail" [(ngModel)]="selected" [style]="{'width':'229px'}" [placeholder]="team.id"></p-dropdown>
+  </div>-->
+
+
+</ion-content>

@@ -1,0 +1,17 @@
+#video_box{
+    float:left;
+}
+#video_overlays {
+    position:absolute;
+    float:left;
+    width:640px;
+    min-height:370px;
+    z-index:300000;
+}
+
+#video-local{
+    position:absolute;
+    left:1px;
+    bottom:5px;
+    width:200px;
+}
